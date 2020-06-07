@@ -24,11 +24,11 @@ module RuboCop
 
     def run_specs
       n_failures = with_encoding do
-        if Process.respond_to?(:fork)
-          parallel_runner_klass.new(rspec_args).execute
-        else
+        # if Process.respond_to?(:fork)
+        #   parallel_runner_klass.new(rspec_args).execute
+        # else
           ::RSpec::Core::Runner.run(rspec_args)
-        end
+        # end
       end
 
       exit!(n_failures) unless n_failures.zero?
